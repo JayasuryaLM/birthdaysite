@@ -17,7 +17,7 @@ export function BackgroundMusic({ play }) {
       ref={audioRef}
       loop
       preload="auto"
-       src={`${process.env.PUBLIC_URL}/music/bgmusic.mp3`}
+       src="/music/bgmusic.mp3"
     />
   );
 }
