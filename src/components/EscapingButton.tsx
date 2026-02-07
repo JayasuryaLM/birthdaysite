@@ -5,15 +5,14 @@ export function EscapingButton() {
   const [attempts, setAttempts] = useState(0);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [pos, setPos] = useState({ top: 0, left: 0 });
-  const buttonRef = useRef(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  // Center button initially
+  // Start button just below the text
   useEffect(() => {
     if (!buttonRef.current) return;
-
     const rect = buttonRef.current.getBoundingClientRect();
     setPos({
-      top: window.innerHeight / 2 - rect.height / 2,
+      top: window.innerHeight / 2 + 100, // offset below text
       left: window.innerWidth / 2 - rect.width / 2,
     });
   }, []);
@@ -39,11 +38,8 @@ export function EscapingButton() {
   };
 
   const handleClick = () => {
-    if (attempts >= 10) {
-      setShowFinalMessage(true);
-    }
+    if (attempts >= 10) setShowFinalMessage(true);
   };
-  
 
   return (
     <>
@@ -51,9 +47,9 @@ export function EscapingButton() {
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
         onClick={handleClick}
-        className="px-8   py-3 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full shadow-lg"
+        className="px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full shadow-lg"
         style={{
-          position: 'fixed',
+          position: 'fixed', // still fixed so it moves on hover
           top: pos.top,
           left: pos.left,
           boxShadow: '0 0 20px rgba(244,114,182,0.5)',
@@ -82,8 +78,8 @@ export function EscapingButton() {
                 className="text-4xl text-rose-600"
                 style={{ fontFamily: 'Pacifico, cursive' }}
               >
-                I love you endlessly 💕
-        please stay with me forever
+                I love you endlessly 💕<br />
+                please stay with me forever
               </p>
             </motion.div>
           </motion.div>
