@@ -17,7 +17,7 @@ export function BackgroundMusic({ play }) {
       ref={audioRef}
       loop
       preload="auto"
-       src="/music/bgmusic.mp3"
+         src={`${(import.meta as any).env.BASE_URL}misc/bgmusic.mp3`}
     />
   );
 }

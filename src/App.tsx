@@ -43,7 +43,7 @@ const [isMuted, setIsMuted] = useState(false);
 useEffect(() => {
   audioRef.current = new Audio(`${(import.meta as any).env.BASE_URL}misc/bgmusic.mp3`);
 
-
+console.log('Audio ref set:', audioRef.current);
   audioRef.current.loop = true;
   audioRef.current.volume = 0.4;
 }, []);
