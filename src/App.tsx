@@ -41,7 +41,8 @@ function App() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 const [isMuted, setIsMuted] = useState(false);
 useEffect(() => {
-  audioRef.current = new Audio(`${process.env.PUBLIC_URL}/misc/bgmusic.mp3`);
+  audioRef.current = new Audio(`${(import.meta as any).env.BASE_URL}misc/bgmusic.mp3`);
+
 
   audioRef.current.loop = true;
   audioRef.current.volume = 0.4;
